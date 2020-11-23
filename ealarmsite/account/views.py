@@ -5,7 +5,9 @@ from django.urls.base import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 
-def signup(request):
+#회원가입 기능 메소드
+#cleand_data는 사용자가 입력한 데이터를 뜻한다.
+def signUp(request):
     if request.method == "GET":
         return render(request, 'login/signup.html', {'f':SigninForm()})
     elif request.method == "POST":
@@ -20,8 +22,8 @@ def signup(request):
         else:
             return render(request, 'login/signup.html',{'f':form})
 
-
-def signin(request):
+#로그인 기능 메소드
+def signIn(request):
     if request.method == "GET":
         return render(request, 'login/signin.html', {'f':SigninForm()} )
     elif request.method == "POST":
@@ -38,6 +40,7 @@ def signin(request):
     
 from django.contrib.auth import logout 
 
-def signout(request): 
+#로그아웃 기능 class
+def signOut(request):
     logout(request)
     return HttpResponseRedirect(reverse('vote:index'))
