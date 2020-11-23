@@ -3,7 +3,8 @@ from .forms import SigninForm
 from django.http.response import HttpResponseRedirect
 from django.urls.base import reverse
 from django.contrib.auth.models import User
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login
+from django.contrib.auth import authenticate
 from django.contrib.auth import logout
 
 # 회원가입 기능 메소드
