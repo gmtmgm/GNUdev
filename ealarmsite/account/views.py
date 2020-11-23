@@ -4,8 +4,8 @@ from django.http.response import HttpResponseRedirect
 from django.urls.base import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import login
-from django.contrib.auth import authenticate
-from django.contrib.auth import logout
+from django.contrib.auth import authenticate, logout
+
 
 # 회원가입 기능 메소드
 # cleand_data는 사용자가 입력한 데이터를 뜻한다.
