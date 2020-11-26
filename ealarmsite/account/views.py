@@ -1,14 +1,11 @@
 from django.shortcuts import render
-from .forms import SigninForm, signInForm
+from .forms import SigninForm
 from django.http.response import HttpResponseRedirect
 from django.urls.base import reverse
 from django.contrib.auth.models import User
-from django.contrib.auth import login
-from django.contrib.auth import authenticate, logout
+from django.contrib.auth import login, authenticate
+from django.contrib.auth import logout
 
-
-# 회원가입 기능 메소드
-# cleand_data는 사용자가 입력한 데이터를 뜻한다.
 def signup(request):
     if request.method == "GET":
         return render(request, 'login/signup.html', {'f':SigninForm()})
@@ -24,23 +21,23 @@ def signup(request):
         else:
             return render(request, 'login/signup.html', {'f':form})
 
-# 로그인 기능 메소드
+
 def signin(request):
     if request.method == "GET":
-        return render(request, 'login/signin.html', {'f':SigninForm()})
+        return render(request, 'login/signin.html', {'f':SigninForm()} )
     elif request.method == "POST":
         form = SigninForm(request.POST)
         id = request.POST['username']
         pw = request.POST['password']
         u = authenticate(username=id, password=pw)
 
-        if u:
-            login(request, user=u)
+        if u: 
+            login(request, user=u) 
             return HttpResponseRedirect(reverse('vote:index'))
         else:
             return render(request, 'login/signin.html', {'f':form, 'error':'아이디나 비밀번호가 일치하지 않습니다.'})
 
-# 로그아웃 기능 class
-def signout(request):
+
+def signout(request): 
     logout(request)
     return HttpResponseRedirect(reverse('vote:index'))
