@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import SigninForm
+from .forms import SigninForm, signInForm
 from django.http.response import HttpResponseRedirect
 from django.urls.base import reverse
 from django.contrib.auth.models import User
@@ -9,7 +9,7 @@ from django.contrib.auth import authenticate, logout
 
 # 회원가입 기능 메소드
 # cleand_data는 사용자가 입력한 데이터를 뜻한다.
-def signUp(request):
+def signup(request):
     if request.method == "GET":
         return render(request, 'login/signup.html', {'f':SigninForm()})
     elif request.method == "POST":
@@ -25,7 +25,7 @@ def signUp(request):
             return render(request, 'login/signup.html', {'f':form})
 
 # 로그인 기능 메소드
-def signIn(request):
+def signin(request):
     if request.method == "GET":
         return render(request, 'login/signin.html', {'f':SigninForm()})
     elif request.method == "POST":
@@ -41,6 +41,6 @@ def signIn(request):
             return render(request, 'login/signin.html', {'f':form, 'error':'아이디나 비밀번호가 일치하지 않습니다.'})
 
 # 로그아웃 기능 class
-def signOut(request):
+def signout(request):
     logout(request)
     return HttpResponseRedirect(reverse('vote:index'))
