@@ -1,8 +1,8 @@
 from selenium import webdriver
 import requests
 
-user_id = "2019010891"
-user_pw = "fkfmzm530@"
+user_id = " "
+user_pw = " "
 
 driver = webdriver.Chrome('C:/chromedriver.exe')
 driver.implicitly_wait(2)
