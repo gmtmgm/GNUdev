@@ -1,5 +1,5 @@
 language: python
 python:
-  - 3.7.3
-  - pytest
-script: pytest login.py
+  - "3.7.3"
+ 
+script: py.test
